@@ -18,7 +18,7 @@ public class Test {
 //    Удалить дубликаты
 //    String strings[] = {"u", "z", "c", "a", "a", "b"};
 //
-//Arrays.asList(strings).stream().distinct().toList();
+//    Arrays.asList(strings).stream().distinct().toList();
 //
 //    Set<String> set = new HashSet<>(Arrays.asList(strings));
 //
@@ -36,13 +36,12 @@ public class Test {
 //    });
 //
 //
-//    map: D2
 //
 //    Условие:
 //    Найдите второе по величине число в списке.
 //        List<Integer> numbers = List.of(5, 3, 9, 1, 9, 7);
 //
-//numbers.stream()
+//    numbers.stream()
 //    .distinct()
 //    .sorted(Comparator.reverseOrder())
 //        .skip(1)
@@ -75,14 +74,12 @@ public class Test {
 //    Задача 1
 //    Что выведет этот код?
 //    public class Example {
-//        private static AtomicInteger count =  new AtomicInteger();
+//        private static int count;
 //
 //        public static void main(String[] args) throws InterruptedException {
 //            Runnable task = () -> {
 //                for (int i = 0; i < 1000; i++) {
-//                    synchronized(this){
 //                        count = count.incrementAndGet();
-//                    }
 //                }
 //            };
 //
@@ -179,7 +176,7 @@ public class Test {
 //            @Component //@Service
 //            @RequiredArgsConstructor
 //            public class CachedDocumentService {
-//                private static final String FORMATTED_DOCUMENT_CACHE = "FORMATTED_DOCUMENT_CACHE"; //Вынисти в const класс
+//                private static final String FORMATTED_DOCUMENT_CACHE = "FORMATTED_DOCUMENT_CACHE"; //Вынести в const класс
 //
 //                private final DocumentRepository documentRepository;
 //                private final DocumentValidationService documentValidationService;
