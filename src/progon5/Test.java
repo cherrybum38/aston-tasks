@@ -79,7 +79,7 @@ public class Test {
 //        public static void main(String[] args) throws InterruptedException {
 //            Runnable task = () -> {
 //                for (int i = 0; i < 1000; i++) {
-//                        count = count.incrementAndGet();
+//                        count++;
 //                }
 //            };
 //

@@ -339,6 +339,25 @@ public class Test {
 //            .forEach((genre, titles) ->
 //                System.out.println(genre + ": " + String.join(", ", titles)));
 
+        movies.stream()
+            .collect(Collectors.groupingBy(
+                Movie::getGenre,
+                Collectors.collectingAndThen(
+                    Collectors.groupingBy(
+                        Movie::getRating
+                    ),
+                    map -> map.entrySet().stream()
+                        .max(Map.Entry.comparingByKey())
+                        .get()
+                        .getValue()
+                        .stream()
+                        .map(Movie::getTitle)
+                        .toList()
+                )
+            ))
+            .forEach((genre, titles) ->
+                System.out.println(genre + ": " + String.join(", ", titles)));
+
 
         // Топ-3 дорогих товаров по каждой категории
         List<Product> products1 = List.of(
@@ -350,17 +369,17 @@ public class Test {
             new Product("Headphones", "Electronics", 199)
         );
 
-        products1.stream()
-            .collect(Collectors.groupingBy(Product::getCategory,
-                Collectors.collectingAndThen(Collectors.toList(),
-                    l -> l.stream()
-                        .sorted(Comparator.comparing(Product::getPrice).reversed())
-                        .limit(3)
-                        .toList())))
-            .forEach((k, v) -> {
-                System.out.println(k + ":");
-                v.forEach( el -> System.out.println("  " + el.getName() + " - " + el.getPrice()));
-            });
+//        products1.stream()
+//            .collect(Collectors.groupingBy(Product::getCategory,
+//                Collectors.collectingAndThen(Collectors.toList(),
+//                    l -> l.stream()
+//                        .sorted(Comparator.comparingDouble(Product::getPrice).reversed())
+//                        .limit(3)
+//                        .toList())))
+//            .forEach((k, v) -> {
+//                System.out.println(k + ":");
+//                v.forEach( el -> System.out.println("  " + el.getName() + " - " + el.getPrice()));
+//            });
     }
 
 }
